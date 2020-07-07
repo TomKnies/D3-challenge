@@ -11,6 +11,7 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
+
 // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
 var svg = d3.select("#scatter")
   .append("svg")
@@ -33,11 +34,11 @@ d3.csv("assets/data/data.csv").then(function(popData) {
     // Step 2: Create scale functions
     // ==============================
     var xScale = d3.scaleLinear()
-      .domain([0, d3.max(popData, d => d.age)])
+      .domain([28, d3.max(popData, d => d.age) + 2])
       .range([0, width]);
 
     var yScale = d3.scaleLinear()
-      .domain([0, d3.max(popData, d => d.smokes)])
+      .domain([0, d3.max(popData, d => d.smokes) + 2])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -74,7 +75,7 @@ d3.csv("assets/data/data.csv").then(function(popData) {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(d) {
-        return (`${d.state}<br>Age (median): ${d.age}<br>Smokes (% of population): ${d.smokes}`);
+        return (`${d.abbr}<br>Age (median): ${d.age}<br>Smokes (%): ${d.smokes}`);
         });
 
     // Step 7: Create tooltip in the chart
@@ -99,12 +100,12 @@ d3.csv("assets/data/data.csv").then(function(popData) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Median Age of State");
+      .text("Percentage of Smokers");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Percentage of State that Smokes");
+      .text("Median Age");
   }).catch(function(error) {
     console.log(error);
   });
