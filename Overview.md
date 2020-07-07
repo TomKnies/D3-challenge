@@ -2,6 +2,6 @@
 Working on using D3 with html and javascript to sort data.
 
 
-With D3 and a .csv of US states' population health information, I can make a scatterplot of things such as the median age
-and percentage of smokers in a state.  At the time of writing, I'd like to improve the tooltip hover a bit to be more clear
-and detailed.  Also not transparent.
+With D3 and a .csv of US states' population health information, I can make a scatterplot of things such as the median age and percentage of smokers in a state.  At the time of writing, I'd like to improve the tooltip hover a bit to be more clear and detailed.  Also not transparent.
+
+I don't know why the text I was given to include is gibberish (is it Latin?) and I'm thinking I should probably write my own actual interpretation of the data.
